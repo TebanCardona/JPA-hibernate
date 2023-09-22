@@ -1,9 +1,11 @@
 package co.com.alura.tienda.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class DatosPersonales {
+public class DatosPersonales implements Serializable {
   private String nombre;
   private String dni;
 

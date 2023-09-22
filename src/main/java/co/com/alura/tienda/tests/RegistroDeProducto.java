@@ -26,7 +26,7 @@ public class RegistroDeProducto {
 
   private static void registrarProducto(String categoryName, String productName, String description,
       BigDecimal precio) {
-    Categoria categoria = new Categoria(categoryName);
+    Categoria categoria = new Categoria(categoryName, "123");
     Producto producto = new Producto(productName, description, precio, categoria);
     EntityManager em = JPAUtil.getEntityManager();
     CategoriaDao categoriaDao = new CategoriaDao(em);

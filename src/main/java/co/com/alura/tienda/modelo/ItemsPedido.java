@@ -1,8 +1,9 @@
-package br.com.alura.tienda.modelo;
+package co.com.alura.tienda.modelo;
 
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,9 +19,9 @@ public class ItemsPedido {
   private int cantidad;
   private BigDecimal precioUnitario;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   private Producto producto;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   private Pedido pedido;
 
   /**

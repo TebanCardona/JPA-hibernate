@@ -1,14 +1,14 @@
-package br.com.alura.tienda.tests;
+package co.com.alura.tienda.tests;
 
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
 
-import br.com.alura.tienda.dao.CategoriaDao;
-import br.com.alura.tienda.dao.ProductoDao;
-import br.com.alura.tienda.modelo.Categoria;
-import br.com.alura.tienda.modelo.Producto;
-import br.com.alura.tienda.util.JPAUtil;
+import co.com.alura.tienda.dao.CategoriaDao;
+import co.com.alura.tienda.dao.ProductoDao;
+import co.com.alura.tienda.modelo.Categoria;
+import co.com.alura.tienda.modelo.Producto;
+import co.com.alura.tienda.util.JPAUtil;
 
 public class RegistroDeProducto {
 
@@ -18,6 +18,8 @@ public class RegistroDeProducto {
     registrarProducto("CELULARES", "Samsung Galaxy S31", "ASD", new BigDecimal("123"));
     EntityManager em = JPAUtil.getEntityManager();
     ProductoDao productoDao = new ProductoDao(em);
+    var asd = productoDao.consultaPorPrecio("Samsung Galaxy S21");
+    System.out.println(asd);
     var nombre = productoDao.consultarTodos();
     nombre.forEach(prod -> System.out.println(prod.getNombre()));
   }

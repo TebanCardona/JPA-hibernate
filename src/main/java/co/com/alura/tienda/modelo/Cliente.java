@@ -1,4 +1,4 @@
-package br.com.alura.tienda.modelo;
+package co.com.alura.tienda.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

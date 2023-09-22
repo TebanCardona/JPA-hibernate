@@ -1,4 +1,4 @@
-package br.com.alura.tienda.modelo;
+package co.com.alura.tienda.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,21 +26,21 @@ public class Pedido {
   private LocalDate fecha = LocalDate.now();
   private BigDecimal valorTotal = new BigDecimal(0);
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   private Cliente cliente;
 
   @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
   private List<ItemsPedido> items = new ArrayList<>();
+
+  public Pedido() {
+
+  }
 
   /**
    * @param cliente
    */
   public Pedido(Cliente cliente) {
     this.cliente = cliente;
-  }
-
-  public Pedido(String name) {
-
   }
 
   public void agregarItems(ItemsPedido item) {

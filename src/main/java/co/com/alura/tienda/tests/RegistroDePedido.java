@@ -1,19 +1,19 @@
-package br.com.alura.tienda.tests;
+package co.com.alura.tienda.tests;
 
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
 
-import br.com.alura.tienda.dao.CategoriaDao;
-import br.com.alura.tienda.dao.ClienteDao;
-import br.com.alura.tienda.dao.PedidoDao;
-import br.com.alura.tienda.dao.ProductoDao;
-import br.com.alura.tienda.modelo.Categoria;
-import br.com.alura.tienda.modelo.Cliente;
-import br.com.alura.tienda.modelo.ItemsPedido;
-import br.com.alura.tienda.modelo.Pedido;
-import br.com.alura.tienda.modelo.Producto;
-import br.com.alura.tienda.util.JPAUtil;
+import co.com.alura.tienda.dao.CategoriaDao;
+import co.com.alura.tienda.dao.ClienteDao;
+import co.com.alura.tienda.dao.PedidoDao;
+import co.com.alura.tienda.dao.ProductoDao;
+import co.com.alura.tienda.modelo.Categoria;
+import co.com.alura.tienda.modelo.Cliente;
+import co.com.alura.tienda.modelo.ItemsPedido;
+import co.com.alura.tienda.modelo.Pedido;
+import co.com.alura.tienda.modelo.Producto;
+import co.com.alura.tienda.util.JPAUtil;
 
 public class RegistroDePedido {
 
@@ -44,6 +44,11 @@ public class RegistroDePedido {
     clienteDao.guardar(cliente);
     pedidoDao.guardar(pedido);
     em.getTransaction().commit();
+
+    // * Realatorio De Ventas
+    var result = pedidoDao.relatorioDeVentas();
+    result.forEach(System.out::println);
+
   }
 
   private static void registrarProducto(String categoryName, String productName, String description,

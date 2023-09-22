@@ -18,10 +18,10 @@ public class RegistroDeProducto {
     registrarProducto("CELULARES", "Samsung Galaxy S31", "ASD", new BigDecimal("123"));
     EntityManager em = JPAUtil.getEntityManager();
     ProductoDao productoDao = new ProductoDao(em);
-    var asd = productoDao.consultaPorPrecio("Samsung Galaxy S21");
-    System.out.println(asd);
-    var nombre = productoDao.consultarTodos();
-    nombre.forEach(prod -> System.out.println(prod.getNombre()));
+    var asd = productoDao.consultarPorParametro(null, new BigDecimal(123), null);
+    asd.forEach(System.out::println);
+    // var nombre = productoDao.consultarTodos();
+    // nombre.forEach(prod -> System.out.println(prod.getNombre()));
   }
 
   private static void registrarProducto(String categoryName, String productName, String description,
